@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        class Capacity {
+            constructor(volume) {
+                this.volume = volume;
+            }
+            getVolume() {
+                return this.volume;
+            }
+        }
+
+        class Backpack extends Capacity {
+            constructor(volume, numCompartments) {
+                super(volume);
+                this.numCompartments = numCompartments;
+            }
+            getNumCompartments() {
+                return this.numCompartments;
+            }
+        }
+
+        class PortableFridge extends Backpack {
+            constructor(volume, numCompartments, temperatureRange) {
+                super(volume, numCompartments);
+                this.temperatureRange = temperatureRange;
+            }
+            getTemperatureRange() {
+                return this.temperatureRange;
+            }
+        }
+
+        capacity = new Capacity(10);
+        console.log(capacity.getVolume()); 
+
+        backpack = new Backpack(20, 3);
+        console.log(backpack.getVolume()); 
+        console.log(backpack.getNumCompartments()); 
+
+        portableFridge = new PortableFridge(30, 4, 5);  
+        console.log(portableFridge.getVolume()); 
+        console.log(portableFridge.getNumCompartments()); 
+        console.log(portableFridge.getTemperatureRange()); 
+    </script>
+</body>
+</html>

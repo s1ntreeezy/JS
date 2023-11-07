@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>123</title>
+</head>
+<body>
+    <script>
+        class Wizard {
+            static _imya = 'Hi';
+            static #count = 0;
+            static Quality = "high-quality";
+            #name;
+            type;
+            _defense;
+
+            constructor(name, age, type, year) {
+                this.name = name;
+                this.age = age;
+                this.type = type;
+                this._year = year;
+
+            }
+
+            static #privateMethod() {
+                console.log(`Я ${this.name} - ваш преподаватель. Мой предмет - ${this.type}`);
+            }
+
+            static _invisibleMethod() {
+            }
+
+            static staticMethod(wizard) {
+                console.log(`Привет, меня зовут ${wizard.name}, мне ${wizard.age} лет и мой предмет - ${wizard.type} .`);
+            }
+
+            publicMethod() {
+                console.log(`Привет, меня зовут ${this.name} и мне ${this.age} лет и мой предмет ${this.type}.`);
+            }
+
+            #Helloword() {
+                console.log(`Привет, меня зовут ${this.name} и мне ${this.age} лет и мой предмет ${this.type}.`);
+            }
+
+            _HelloMir() {
+
+            }
+        }
+
+
+        const wizard1 = new Wizard("Абрахам Ронен", 30, "Заклинания", "2 курс");
+        const wizard2 = new Wizard("Амикус Кэрроу", 25, "Защита от Тёмных искусств", "1 курс");
+        const wizard3 = new Wizard("Минерва Макгонагалл", 26, "Трансфигурация", "4 курс");
+        wizard2.publicMethod();
+        Wizard.staticMethod(wizard1);
+    </script>
+</body>
+</html>
