@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #7FB3D5;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .highlight {
+            background-color: #FFD700;
+        }
+    </style>
+    <title>Interactive Design</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Design</h1>
+        <button id="btnClick">Click me!</button>
+        <div id="box" class="box"></div>
+    </div>
+
+    <script>
+        document.getElementById('btnClick').addEventListener('click', function () {
+            alert('Button clicked!');
+        });
+
+        document.getElementById('box').addEventListener('mouseover', function () {
+            this.classList.add('highlight');
+        });
+
+        document.getElementById('box').addEventListener('mouseout', function () {
+            this.classList.remove('highlight');
+        });
+
+        document.addEventListener('keypress', function (event) {
+            if (event.key === 'r') {
+                document.body.style.backgroundColor = 'lightcoral';
+            }
+        });
+
+        document.addEventListener('keypress', function (event) {
+            if (event.key === 'b') {
+                document.body.style.backgroundColor = 'lightblue';
+            }
+        });
+
+        window.addEventListener('resize', function () {
+            alert('Window resized!');
+        });
+
+        window.addEventListener('scroll', function () {
+            console.log('Page scrolled');
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM fully loaded and parsed');
+        });
+
+        document.getElementById('box').addEventListener('click', function () {
+            this.style.transform = 'scale(1.2)';
+        });
+
+        document.getElementById('box').addEventListener('transitionend', function () {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
