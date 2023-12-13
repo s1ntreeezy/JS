@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #7FB3D5;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .highlight {
+            background-color: #FFD700;
+        }
+    </style>
+    <title>Interactive Design</title>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>Interactive Design</h1>
+        <button @click="showAlert">Click me!</button>
+        <div class="box"
+             @mouseover="addHighlight"
+             @mouseout="removeHighlight"
+             @click="growBox"
+             :class="{ 'highlight': isHighlighted }"
+             :style="{ transform: boxTransform }"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                boxTransform: 'scale(1)',
+                isHighlighted: false
+            },
+            methods: {
+                showAlert: function () {
+                    alert('Кнопка нажата!');
+                },
+                addHighlight: function () {
+                    this.isHighlighted = true;
+                },
+                removeHighlight: function () {
+                    this.isHighlighted = false;
+                },
+                growBox: function () {
+                    this.boxTransform = 'scale(1.2)';
+                    setTimeout(() => {
+                        this.boxTransform = 'scale(1)';
+                    }, 300);
+                }
+            },
+            mounted: function () {
+                document.addEventListener('keypress', (event) => {
+                    if (event.key === 'r') {
+                        document.body.style.backgroundColor = 'lightcoral';
+                    } else if (event.key === 'b') {
+                        document.body.style.backgroundColor = 'lightblue';
+                    }
+                });
+
+                window.addEventListener('resize', () => {
+                    alert('Окно изменено!');
+                });
+
+                window.addEventListener('scroll', () => {
+                    console.log('Страница прокручена');
+                });
+
+                console.log('DOM полностью загружен и обработан');
+            }
+        });
+    </script>
+</body>
+</html>
